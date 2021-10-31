@@ -44,8 +44,8 @@ jobs:
           cd unisciReportExcel/target
           echo "Vediamo contenuto cartella target"
           ls -a
-          java -jar unisciReportExcel-0.0.1-jarReportTest ${{ secrets.DIR_REPORT_TRADIZIONALI }} ${{ secrets.NOME_REPORT_TIPO_1 }}
-          java -jar unisciReportExcel-0.0.1-jarReportTest ${{ secrets.DIR_REPORT_HOOKS }} ${{ secrets.NOME_REPORT_TIPO_2 }}
+          sudo bash -c 'java -jar unisciReportExcel-0.0.1-jarReportTest ${{ secrets.DIR_REPORT_TRADIZIONALI }} ${{ secrets.NOME_REPORT_TIPO_1 }}'
+          sudo bash -c 'java -jar unisciReportExcel-0.0.1-jarReportTest ${{ secrets.DIR_REPORT_HOOKS }} ${{ secrets.NOME_REPORT_TIPO_2 }}'
           sudo cp ${{ secrets.NOME_REPORT_TIPO_1 }}.xls ${{ secrets.DIR_BASE_PATH }}
           sudo cp ${{ secrets.NOME_REPORT_TIPO_2 }}.xls ${{ secrets.DIR_BASE_PATH }}
           
