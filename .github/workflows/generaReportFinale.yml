@@ -44,8 +44,7 @@ jobs:
           cd unisciReportExcel/target
           echo "Vediamo contenuto cartella target"
           ls -a
-          sudo bash -c 'java -jar unisciReportExcel-0.0.1-jarReportTest.jar ${{ secrets.DIR_REPORT_TRADIZIONALI }} ${{ secrets.NOME_REPORT_TIPO_1 }}'
-          sudo bash -c 'java -jar unisciReportExcel-0.0.1-jarReportTest.jar ${{ secrets.DIR_REPORT_HOOKS }} ${{ secrets.NOME_REPORT_TIPO_2 }}'
+          sudo bash -c 'java -jar unisciReportExcel-0.0.1-jarReportTest.jar /home/runner/work/Tesi-ReportFinali-StrumentoGenerale/Tesi-ReportFinali-StrumentoGenerale/Report-Separati reportComplessivo'
           
       - name: Step 4 - Sposta file xls generati
         run: |
@@ -53,11 +52,9 @@ jobs:
           cd unisciReportExcel/target
           echo "Vediamo contenuto cartella target"
           ls -a     
-          sudo cp ${{ secrets.NOME_REPORT_TIPO_1 }}.xls ${{ secrets.DIR_BASE_PATH }}
-          sudo cp ${{ secrets.NOME_REPORT_TIPO_2 }}.xls ${{ secrets.DIR_BASE_PATH }}
+          sudo cp reportComplessivo.xls /home/runner/work/Tesi-ReportFinali-StrumentoGenerale/Tesi-ReportFinali-StrumentoGenerale 
           
-          
-      - name: Step 4 - Push dei file dei report ottenuti
+      - name: Step 5 - Push dei file dei report ottenuti
         run: |
           echo "Vediamo quali cartelle ci sono nella directory di partenza"
           ls -a
@@ -68,6 +65,8 @@ jobs:
           echo "Andiamo ad aggiungere i file xls"
           git add *.xls
           echo "File xls aggiunti!"
+          echo "`date +%Y-%m-%d_%H-%M-%S`" > timeCommit.txt
+          git add timeCommit.txt
           git commit -m "Aggiunta dei report complessivi finali"
           git branch -M master 
           git push -u origin master
