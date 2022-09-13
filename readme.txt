@@ -14,3 +14,4 @@ Successivamente:
 7) Attendi esecuzione file generaReportFinale.yml
 8) Scarica il file generato reportComplessivo.xls
 
+
